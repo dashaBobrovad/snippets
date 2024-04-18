@@ -20,5 +20,15 @@
 			"};",
 		],
 		"description": "React component with named import"
+	},
+	"Public api export-import": {
+		"scope": "typescript,typescriptreact",
+		"prefix": "pa",
+		"body": [
+			"import { ${TM_DIRECTORY/^.+[\\/\\\\]+(.*)$/$1/} } from \"./ui/${TM_DIRECTORY/^.+[\\/\\\\]+(.*)$/$1/}\";",
+			"",
+			"export { ${TM_DIRECTORY/^.+[\\/\\\\]+(.*)$/$1/} }",
+		],
+		"description": "export-import for public api"
 	}
 }
