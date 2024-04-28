@@ -1,22 +1,32 @@
 {
+	// Place your global snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+	// Placeholders with the same ids are connected.
+	// Example:
 	"React component": {
 		"scope": "typescript,typescriptreact",
 		"prefix": "rc",
 		"body": [
-			"import React, {FC} from \"react\";",
+			"import React, { FC } from \"react\";",
+			"import { cls } from \"shared/lib/cls/cls\";",
+			"import { useTranslation } from \"react-i18next\";",
 			"import cx from \"./${TM_FILENAME_BASE}.module.scss\";",
-			"import { cls } from \"shared/lib/cls\";",
 			"",
 			"interface ${TM_FILENAME_BASE}Props {",
 			"    className?: string;",
 			"}",
 			"",
 			"export const ${TM_FILENAME_BASE}: FC<${TM_FILENAME_BASE}Props> = ({ className }) => {",
-			"  return (",
-			"    <div className={cls(cx.${TM_FILENAME_BASE/(.*)/${1:/downcase}/}, {}, [className])}>",
-			"      $2",
-			"    </div>",
-			"  )",
+			"    const { t } = useTranslation();",
+			"",
+			"    return (",
+			"        <div className={cls(cx.${TM_FILENAME_BASE/(.*)/${1:/downcase}/}, {}, [className])}>",
+			"            { t(\"\") }",
+			"        </div>",
+			"    );",
 			"};",
 		],
 		"description": "React component with named import"
@@ -27,8 +37,23 @@
 		"body": [
 			"import { ${TM_DIRECTORY/^.+[\\/\\\\]+(.*)$/$1/} } from \"./ui/${TM_DIRECTORY/^.+[\\/\\\\]+(.*)$/$1/}\";",
 			"",
-			"export { ${TM_DIRECTORY/^.+[\\/\\\\]+(.*)$/$1/} }",
+			"export { ${TM_DIRECTORY/^.+[\\/\\\\]+(.*)$/$1/} };",
 		],
 		"description": "export-import for public api"
+	},
+	"jest": {
+		"scope": "typescript,typescriptreact",
+		"prefix": "jt",
+		"body": [
+			"import { render } from \"@testing-library/react\";",
+			"",
+			"describe(\"${TM_DIRECTORY/^.+[\\/\\\\]+(.*)$/$1/} test\", () => {",
+			"    test(\"\", () => {",
+			"        render();",
+			"        expect();",
+			"    });",
+			"});"
+		],
+		"description": "jest unit test"
 	}
 }
