@@ -45,7 +45,7 @@
 		"scope": "typescript,typescriptreact",
 		"prefix": "jt",
 		"body": [
-			"import { render } from \"@testing-library/react\";",
+			"import { render, screen } from \"@testing-library/react\";",
 			"",
 			"describe(\"${TM_DIRECTORY/^.+[\\/\\\\]+(.*)$/$1/} test\", () => {",
 			"    test(\"\", () => {",
