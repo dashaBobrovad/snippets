@@ -55,5 +55,35 @@
 			"});"
 		],
 		"description": "jest unit test"
+	},
+	"storybook storie": {
+		"scope": "typescript,typescriptreact",
+		"prefix": "sb",
+		"body": [
+			"import React from \"react\";",
+			"import { ComponentStory, ComponentMeta } from \"@storybook/react\";",
+			"import { ThemeDecorator } from \"shared/config/storybook/ThemeDecorator/ThemeDecorator\";",
+			"import { Theme } from \"app/providers/ThemeProvider\";",
+			"import { ${TM_FILENAME_BASE/(.*?)\\..*/$1/} } from \"./${TM_FILENAME_BASE/(.*?)\\..*/$1/}\";",
+			"",
+			"export default {",
+			"    title: \"component/${TM_FILENAME_BASE/(.*?)\\..*/$1/}\",",
+			"    component: ${TM_FILENAME_BASE/(.*?)\\..*/$1/},",
+			"    argTypes: {",
+			"        backgroundColor: { control: \"color\" },",
+			"    },",
+			"} as ComponentMeta<typeof ${TM_FILENAME_BASE/(.*?)\\..*/$1/}>;",
+			"",
+			"const Template:",
+			"    ComponentStory<typeof ${TM_FILENAME_BASE/(.*?)\\..*/$1/}> = (args) => <${TM_FILENAME_BASE/(.*?)\\..*/$1/} {...args} />;",
+			"",
+			"export const Light = Template.bind({});",
+			"Light.args = {};",
+			"",
+			"export const Dark = Template.bind({});",
+			"Dark.args = {};",
+			"Dark.decorators = [ThemeDecorator(Theme.DARK)];",
+		],
+		"description": "storybook storie"
 	}
 }
