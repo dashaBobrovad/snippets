@@ -66,8 +66,10 @@
 			"import { Theme } from \"app/providers/ThemeProvider\";",
 			"import { ${TM_FILENAME_BASE/(.*?)\\..*/$1/} } from \"./${TM_FILENAME_BASE/(.*?)\\..*/$1/}\";",
 			"",
+			// /.*src([]*)// 
+			// \widgets\1PageError\ui
 			"export default {",
-			"    title: \"component/${TM_FILENAME_BASE/(.*?)\\..*/$1/}\",",
+			"    title: \"filePath/${TM_FILENAME_BASE/(.*?)\\..*/$1/}\",",
 			"    component: ${TM_FILENAME_BASE/(.*?)\\..*/$1/},",
 			"    argTypes: {",
 			"        backgroundColor: { control: \"color\" },",
