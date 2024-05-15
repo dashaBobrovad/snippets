@@ -27,7 +27,7 @@
 			"    const { t } = useTranslation();",
 			"",
 			"    return (",
-			"        <div className={cls(cx.${TM_FILENAME_BASE/(.*)/${1:/downcase}/}, {}, [className])}>",
+			"        <div className={cls(cx.${TM_FILENAME_BASE/(.*)/${1}/}, {}, [className])}>",
 			"            { t(\"\") }",
 			"        </div>",
 			"    );",
